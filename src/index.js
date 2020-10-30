@@ -83,6 +83,7 @@ function gulpTerser(defaultOption: Object = {}, minify: Function | undefined): F
 
             return Promise.resolve(callback());
           }).catch((err: Error): void => {
+            err.path = file.path;
             this.emit('error', new PluginError(PLUGIN_NAME, err));
             return callback();
           });
